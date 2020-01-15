@@ -1,0 +1,2 @@
+include ':app', ':comlib', ':openglbasicshape'
+rootProject.name='OpenGLPlayground'
