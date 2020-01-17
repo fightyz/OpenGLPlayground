@@ -11,7 +11,10 @@ import javax.microedition.khronos.opengles.GL10;
  * @date 2020-01-15 14:57
  */
 public class BaseRenderer implements GLSurfaceView.Renderer {
-    protected int BYTES_PRE_FLOAT = 4;
+    /**
+     * 一个 float 数据占 4 个字节
+     */
+    protected int BYTES_PER_FLOAT = 4;
 
     protected Context mContext;
 
