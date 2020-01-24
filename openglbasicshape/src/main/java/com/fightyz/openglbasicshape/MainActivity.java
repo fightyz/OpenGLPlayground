@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.fightyz.openglbasicshape.renderers.LineRenderer;
 import com.fightyz.openglbasicshape.renderers.PointRenderer;
 
 /**
@@ -45,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
             glSurfaceView.setEGLContextClientVersion(2);
 
             // Assign our renderer.
-            glSurfaceView.setRenderer(new PointRenderer(this));
+            glSurfaceView.setRenderer(new LineRenderer(this));
             rendererSet = true;
         } else {
             Toast.makeText(this, "This device does not support OpenGL ES 2.0.",

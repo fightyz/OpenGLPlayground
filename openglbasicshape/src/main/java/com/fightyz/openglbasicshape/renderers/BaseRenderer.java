@@ -3,8 +3,14 @@ package com.fightyz.openglbasicshape.renderers;
 import android.content.Context;
 import android.opengl.GLSurfaceView;
 
+import com.fightyz.openglbasicshape.R;
+import com.fightyz.openglbasicshape.utils.ShaderHelper;
+import com.fightyz.openglbasicshape.utils.TextResourceReader;
+
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
+
+import static android.opengl.GLES20.glUseProgram;
 
 /**
  * @author joe.yang@dji.com
@@ -18,13 +24,28 @@ public class BaseRenderer implements GLSurfaceView.Renderer {
 
     protected Context mContext;
 
+    protected int program;
+
+    String vertexShaderSource;
+    String fragmentShaderSource;
+
     public BaseRenderer(Context context) {
         this.mContext = context;
+        readShaderSource();
     }
 
     @Override
     public void onSurfaceCreated(GL10 gl10, EGLConfig eglConfig) {
+        if (vertexShaderSource == null || fragmentShaderSource == null) {
+            throw new RuntimeException("Please set Shader Source First");
+        }
 
+        int vertexShader = ShaderHelper.compileVertexShader(vertexShaderSource);
+        int fragmentShader = ShaderHelper.compileFragmentShader(fragmentShaderSource);
+
+        program = ShaderHelper.linkProgram(vertexShader, fragmentShader);
+        ShaderHelper.validateProgram(program);
+        glUseProgram(program);
     }
 
     @Override
@@ -34,6 +55,10 @@ public class BaseRenderer implements GLSurfaceView.Renderer {
 
     @Override
     public void onDrawFrame(GL10 gl10) {
+
+    }
+
+    protected void readShaderSource() {
 
     }
 }
