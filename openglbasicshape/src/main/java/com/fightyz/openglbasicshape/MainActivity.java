@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.fightyz.openglbasicshape.renderers.LineRenderer;
 import com.fightyz.openglbasicshape.renderers.PointRenderer;
+import com.fightyz.openglbasicshape.renderers.TriangleRenderer;
 
 /**
  * @author joe.yang@dji.com
@@ -46,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
             glSurfaceView.setEGLContextClientVersion(2);
 
             // Assign our renderer.
-            glSurfaceView.setRenderer(new LineRenderer(this));
+            glSurfaceView.setRenderer(new TriangleRenderer(this));
             rendererSet = true;
         } else {
             Toast.makeText(this, "This device does not support OpenGL ES 2.0.",
