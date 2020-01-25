@@ -22,8 +22,7 @@ import static android.opengl.GLES20.glShaderSource;
 import static android.opengl.GLES20.glValidateProgram;
 
 /**
- * @author joe.yang@dji.com
- * @date 2020-01-15 15:53
+ * 创建一个 OpenGL 程序的通用步骤
  */
 public class ShaderHelper {
     public static int compileVertexShader(String shaderCode) {
