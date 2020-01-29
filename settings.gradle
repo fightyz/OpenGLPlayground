@@ -1,2 +1,2 @@
-include ':app', ':comlib', ':opengl_basic_shape'
+include ':app', ':comlib', ':opengl_basic_shape', ':official_opengl_sample'
 rootProject.name='OpenGLPlayground'

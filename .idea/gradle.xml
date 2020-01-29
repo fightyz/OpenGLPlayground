@@ -10,6 +10,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/comlib" />
+            <option value="$PROJECT_DIR$/official_opengl_sample" />
             <option value="$PROJECT_DIR$/opengl_basic_shape" />
           </set>
         </option>
