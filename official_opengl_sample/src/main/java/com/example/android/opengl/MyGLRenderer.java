@@ -2,6 +2,7 @@ package com.example.android.opengl;
 
 import android.opengl.GLSurfaceView;
 import android.opengl.Matrix;
+import android.os.SystemClock;
 import android.util.Log;
 
 import javax.microedition.khronos.egl.EGLConfig;
@@ -47,7 +48,7 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
 
         // this projection matrix is applied to object coordinates
         // in the onDrawFrame() method
-        Matrix.frustumM(mProjectionMatrix, 0, -ratio, ratio, -1, 1, 4f, 15);
+        Matrix.frustumM(mProjectionMatrix, 0, -ratio, ratio, -1, 1, 3, 7);
     }
 
     @Override
@@ -58,7 +59,7 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         // Set the camera position (View matrix)
-        Matrix .setLookAtM(mViewMatrix, 0, 0, 10, 5, 0f, 0f, 0f, 0f, 1.0f, 0f);
+        Matrix.setLookAtM(mViewMatrix, 0, 0, 0, -3, 0f, 0f, 0f, 0f, 1.0f, 0f);
 
         // Calculate the projection and view transformation
         Matrix.multiplyMM(mMVPMatrix, 0, mProjectionMatrix, 0, mViewMatrix, 0);
@@ -70,13 +71,17 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
 
         // Use the following code to generate constant rotation.
         // Leave this code out when using TouchEvents.
-        // long time = SystemClock.uptimeMillis() % 4000L;
-        // float angle = 0.090f *((int) time);
+        long time = SystemClock.uptimeMillis() % 4000L;
+        float angle = 0.090f * ((int) time);
+        Matrix.setRotateM(mRotationMatrix, 0, angle, 0, 0, -1.0f);
 
-//        Matrix.setRotateM(mRotationMatrix, 0, mAngle, 0, 0, 1.0f);
+        // Combine the rotation matrix with the projection and camera view
+        // Note that the vPMatrix factor *must be first* in order
+        // for the matrix multiplication product to be correct.
+        Matrix.multiplyMM(scratch, 0, mMVPMatrix, 0, mRotationMatrix, 0);
 
         // Draw triangle
-        mTriangle.draw(mMVPMatrix);
+        mTriangle.draw(scratch);
     }
 
     public static int loadShader(int type, String shaderCode) {
