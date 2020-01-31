@@ -2,6 +2,8 @@ package com.fightyz.openglbasicshape.utils;
 
 import android.content.Context;
 
+import com.fightyz.comlib.LogUtil;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -27,7 +29,7 @@ public class TextResourceReader {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        LogUtil.d(body.toString());
         return body.toString();
     }
 }

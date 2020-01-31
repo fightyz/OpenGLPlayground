@@ -24,8 +24,4 @@ public class CircleRenderer extends BaseRenderer {
     public void onDrawFrame(GL10 gl10) {
         super.onDrawFrame(gl10);
     }
-
-    @Override
-    protected void readShaderSource() {
-    }
 }
