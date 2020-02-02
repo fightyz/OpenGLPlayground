@@ -6,6 +6,11 @@ import android.opengl.GLSurfaceView;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
+import static android.opengl.GLES20.GL_COLOR_BUFFER_BIT;
+import static android.opengl.GLES20.GL_DEPTH_BUFFER_BIT;
+import static android.opengl.GLES20.glClear;
+import static android.opengl.GLES20.glClearColor;
+
 /**
  * @author joe.yang@dji.com
  * @date 2020-01-15 14:57
@@ -22,7 +27,9 @@ public abstract class BaseRenderer implements GLSurfaceView.Renderer {
     }
 
     @Override
-    public void onSurfaceCreated(GL10 gl10, EGLConfig eglConfig) {}
+    public void onSurfaceCreated(GL10 gl10, EGLConfig eglConfig) {
+        glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+    }
 
     /**
      * Surface 刚创建的时候，它的 size 是 0，也就是说在画第一次图之前它会被调用一次
@@ -34,5 +41,7 @@ public abstract class BaseRenderer implements GLSurfaceView.Renderer {
     public void onSurfaceChanged(GL10 gl10, int i, int i1) { }
 
     @Override
-    public void onDrawFrame(GL10 gl10) { }
+    public void onDrawFrame(GL10 gl10) {
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    }
 }

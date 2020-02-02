@@ -32,14 +32,17 @@ import static android.opengl.GLES20.glValidateProgram;
 public class ShaderHelper {
     private static final String TAG = "ShaderHelper";
 
+    // 编译顶点着色器
     public static int compileVertexShader(String shaderCode) {
         return compileShader(GL_VERTEX_SHADER, shaderCode);
     }
 
+    // 编译片段着色器
     public static int compileFragmentShader(String shaderCode) {
         return compileShader(GL_FRAGMENT_SHADER, shaderCode);
     }
 
+    // 根据类型编译着色器
     private static int compileShader(int type, String shaderCode) {
         final int shaderObjectId = glCreateShader(type);
         if (shaderObjectId == 0) {

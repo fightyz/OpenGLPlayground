@@ -1,18 +1,16 @@
 package com.fightyz.openglbasicshape;
 
-import android.app.ActivityManager;
-import android.content.Context;
-import android.content.pm.ConfigurationInfo;
 import android.opengl.GLSurfaceView;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.SparseArray;
-import android.widget.Toast;
+import android.view.MotionEvent;
+import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.fightyz.openglbasicshape.renderers.BaseRenderer;
+import com.fightyz.openglbasicshape.renderers.CircleRenderer;
 import com.fightyz.openglbasicshape.renderers.LineRenderer;
 import com.fightyz.openglbasicshape.renderers.PointRenderer;
 import com.fightyz.openglbasicshape.renderers.RectangleRender;
@@ -43,8 +41,30 @@ public class MainActivity extends AppCompatActivity {
         // Assign our renderer.
         glSurfaceView.setRenderer(mRendererArray.get(mType));
          // 两种绘图模式，第一种连续不断的画，适用于动画；第二种有需要时再画，通过 requestRender 调用
-        glSurfaceView.setRenderMode(GLSurfaceView.RENDERMODE_CONTINUOUSLY);
+//        glSurfaceView.setRenderMode(GLSurfaceView.RENDERMODE_CONTINUOUSLY);
         glSurfaceView.setRenderMode(GLSurfaceView.RENDERMODE_WHEN_DIRTY);
+        glSurfaceView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+                    glSurfaceView.queueEvent(new Runnable() {
+                        @Override
+                        public void run() {
+
+                        }
+                    });
+                } else if (motionEvent.getAction() == MotionEvent.ACTION_MOVE) {
+                    glSurfaceView.queueEvent(new Runnable() {
+                        @Override
+                        public void run() {
+
+                        }
+                    });
+                }
+                return false;
+            }
+        });
+
         setContentView(glSurfaceView);
     }
 
@@ -53,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
         mRendererArray.put(1, new LineRenderer(this));
         mRendererArray.put(2, new TriangleRenderer(this));
         mRendererArray.put(3, new RectangleRender(this));
+        mRendererArray.put(4, new CircleRenderer(this));
     }
 
     @Override
