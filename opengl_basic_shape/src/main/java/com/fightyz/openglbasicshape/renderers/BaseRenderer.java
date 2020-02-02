@@ -21,6 +21,7 @@ public abstract class BaseRenderer implements GLSurfaceView.Renderer {
     protected float[] modelMatrix = new float[16];
     protected float[] viewMatrix = new float[16];
     protected float[] projectionMatrix = new float[16];
+    protected float[] mvpMatrix = new float[16];
 
     public BaseRenderer(Context context) {
         this.mContext = context;
