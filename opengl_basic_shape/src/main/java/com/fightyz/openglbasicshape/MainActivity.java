@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.fightyz.openglbasicshape.renderers.BaseRenderer;
 import com.fightyz.openglbasicshape.renderers.CircleRenderer;
+import com.fightyz.openglbasicshape.renderers.CubeRender;
 import com.fightyz.openglbasicshape.renderers.LineRenderer;
 import com.fightyz.openglbasicshape.renderers.PointRenderer;
 import com.fightyz.openglbasicshape.renderers.RectangleRender;
@@ -74,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
         mRendererArray.put(2, new TriangleRenderer(this));
         mRendererArray.put(3, new RectangleRender(this));
         mRendererArray.put(4, new CircleRenderer(this));
+        mRendererArray.put(5, new CubeRender(this));
     }
 
     @Override

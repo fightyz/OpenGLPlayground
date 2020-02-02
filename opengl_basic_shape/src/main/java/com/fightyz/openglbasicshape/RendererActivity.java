@@ -55,6 +55,7 @@ public class RendererActivity extends AppCompatActivity {
         mRenderList.add("Triangle Render");
         mRenderList.add("Rectangle Render");
         mRenderList.add("Circle Render");
+        mRenderList.add("Cube Render");
         return mRenderList;
     }
 }

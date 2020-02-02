@@ -39,7 +39,7 @@ public abstract class BaseRenderer implements GLSurfaceView.Renderer {
      * @param i1
      */
     @Override
-    public void onSurfaceChanged(GL10 gl10, int i, int i1) { }
+    public void onSurfaceChanged(GL10 gl10, int width, int height) { }
 
     @Override
     public void onDrawFrame(GL10 gl10) {
