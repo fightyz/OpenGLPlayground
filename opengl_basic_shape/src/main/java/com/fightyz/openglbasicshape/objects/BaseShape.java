@@ -7,6 +7,7 @@ import com.fightyz.openglbasicshape.data.VertexArray;
 public abstract class BaseShape {
     protected Context context;
     protected VertexArray vertexArray;
+    protected VertexArray indexArray;
     protected int program;
 
     protected float[] modelMatrix = new float[16];

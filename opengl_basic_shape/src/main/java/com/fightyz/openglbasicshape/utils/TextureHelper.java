@@ -45,6 +45,7 @@ public class TextureHelper {
         bitmap.recycle();
 
         glGenerateMipmap(GL_TEXTURE_2D);
+        // 解除与纹理的绑定，避免用其他的纹理方法意外地改变这个纹理
         glBindTexture(GL_TEXTURE_2D, 0);
         return textureObjectIds[0];
     }

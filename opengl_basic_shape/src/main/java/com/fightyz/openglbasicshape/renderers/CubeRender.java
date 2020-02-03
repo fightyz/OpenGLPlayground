@@ -61,7 +61,7 @@ public class CubeRender extends BaseRenderer {
     public CubeRender(Context context) {
         super(context);
         final float cubePosition[] = {
-                // Front face(由两个三角形的坐标定义)
+                // Front face(由两个三角形的坐标定义，每个三角形都是逆时针定义)
                 -1.0f, 1.0f, 1.0f,
                 -1.0f, -1.0f, 1.0f,
                 1.0f, 1.0f, 1.0f,
@@ -78,12 +78,12 @@ public class CubeRender extends BaseRenderer {
                 1.0f, 1.0f, -1.0f,
 
                 // Back face
-                1.0f, 1.0f, -1.0f,
-                1.0f, -1.0f, -1.0f,
                 -1.0f, 1.0f, -1.0f,
-                1.0f, -1.0f, -1.0f,
                 -1.0f, -1.0f, -1.0f,
-                -1.0f, 1.0f, -1.0f,
+                1.0f, 1.0f, -1.0f,
+                -1.0f, -1.0f, -1.0f,
+                1.0f, -1.0f, -1.0f,
+                1.0f, 1.0f, -1.0f,
 
                 // Left face
                 -1.0f, 1.0f, -1.0f,
@@ -112,7 +112,7 @@ public class CubeRender extends BaseRenderer {
 
         final float[] cubeColor = {
                 // Front face (red)
-                1.0f, 0.0f, 0.0f, 1.0f,
+                0.0f, 1.0f, 0.0f, 1.0f, // 这个顶点的颜色与该面其他顶点颜色不一样
                 1.0f, 0.0f, 0.0f, 1.0f,
                 1.0f, 0.0f, 0.0f, 1.0f,
                 1.0f, 0.0f, 0.0f, 1.0f,
@@ -171,6 +171,7 @@ public class CubeRender extends BaseRenderer {
     @Override
     public void onDrawFrame(GL10 gl10) {
         super.onDrawFrame(gl10);
+//        glClear(GL_COLOR_BUFFER_BIT);
         long time = SystemClock.uptimeMillis() % 10000L;
         float angleInDegrees = (360.0f / 10000.0f) * ((int) time);
         glUseProgram(mProgramHandle);
@@ -215,6 +216,7 @@ public class CubeRender extends BaseRenderer {
         final float far = 10.0f;
 
         Matrix.frustumM(mProjectionMatrix, 0, left, right, bottom, top, near, far);
+//        Matrix.perspectiveM(mProjectionMatrix, 0, 45.0f, ratio, near, far);
     }
 
     @Override
