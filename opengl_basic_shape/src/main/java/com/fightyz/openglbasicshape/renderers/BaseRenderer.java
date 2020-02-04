@@ -18,6 +18,10 @@ import static android.opengl.GLES20.glClearColor;
 public abstract class BaseRenderer implements GLSurfaceView.Renderer {
     protected Context mContext;
 
+    private float angleX;
+    private float angleY;
+    private float angleZ;
+
     protected float[] modelMatrix = new float[16];
     protected float[] viewMatrix = new float[16];
     protected float[] projectionMatrix = new float[16];
@@ -44,5 +48,29 @@ public abstract class BaseRenderer implements GLSurfaceView.Renderer {
     @Override
     public void onDrawFrame(GL10 gl10) {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    }
+
+    public float getAngleX() {
+        return angleX;
+    }
+
+    public void setAngleX(float angleX) {
+        this.angleX = angleX;
+    }
+
+    public float getAngleY() {
+        return angleY;
+    }
+
+    public void setAngleY(float angleY) {
+        this.angleY = angleY;
+    }
+
+    public float getAngleZ() {
+        return angleZ;
+    }
+
+    public void setAngleZ(float angleZ) {
+        this.angleZ = angleZ;
     }
 }
