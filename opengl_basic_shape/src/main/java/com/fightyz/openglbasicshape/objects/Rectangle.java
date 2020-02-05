@@ -115,8 +115,10 @@ public class Rectangle extends BaseShape {
         aTextureCoordinatesLocation = glGetAttribLocation(program, A_TEXTURE_COORDINATES);
         uTextureUnitLocation = glGetUniformLocation(program, U_TEXTURE_UNIT);
         vertexArray.setVertexAttribPointer(0, aPositionLocation, POSITION_COMPONENT_COUNT, STRIDE);
-//        vertexArray.setVertexAttribPointer(POSITION_COMPONENT_COUNT, aTextureCoordinatesLocation,
+//        vertexArray.setVertexAttribPointer(0, aPositionLocation, POSITION_COMPONENT_COUNT, STRIDE);
+//        vertexArray.setVertexAttribPointer(2, aTextureCoordinatesLocation,
 //                TEXTURE_COORDINATES_COMPONENT_COUNT, STRIDE);
+
         textureVertexArray.setVertexAttribPointer(0, aTextureCoordinatesLocation, TEXTURE_COORDINATES_COMPONENT_COUNT, STRIDE);
         setIdentityM(mvpMatrix, 0);
         int texture = TextureHelper.loadTexture(context, R.drawable.image);
