@@ -4,6 +4,7 @@ import android.content.Context;
 import android.opengl.Matrix;
 
 import com.fightyz.openglbasicshape.objects.Sphere;
+import com.fightyz.openglbasicshape.objects.SphereTexture;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
@@ -16,6 +17,7 @@ import static android.opengl.Matrix.setIdentityM;
 
 public class SphereRenderer extends BaseRenderer {
     Sphere sphere;
+    SphereTexture sphereTexture;
 
     float radius = 15f;
 
@@ -39,7 +41,9 @@ public class SphereRenderer extends BaseRenderer {
         glEnable(GL_CULL_FACE);
         glEnable(GL_DEPTH_TEST);
         sphere = new Sphere(mContext);
+        sphereTexture = new SphereTexture(mContext);
         sphere.bindData();
+        sphereTexture.bindData();
 
         rotateThread = new RotateThread();
         rotateThread.start();
@@ -55,7 +59,7 @@ public class SphereRenderer extends BaseRenderer {
     public void onDrawFrame(GL10 gl10) {
         super.onDrawFrame(gl10);
         setIdentityM(modelMatrix, 0);
-        Matrix.rotateM(modelMatrix, 0, angleX, 0f, 1f, 0);
+        Matrix.rotateM(modelMatrix, 0, angleX, 1f, 1f, 0);
         Matrix.frustumM(projectionMatrix, 0, -ratio, ratio, -1, 1, 3, 30);
         // 设置相机位置
         Matrix.setLookAtM(viewMatrix, 0, 1.0f, -10.0f, -4.0f, 0f, 0f, 0f,
@@ -64,7 +68,8 @@ public class SphereRenderer extends BaseRenderer {
         Matrix.multiplyMM(temp, 0, viewMatrix, 0, modelMatrix, 0);
         // 计算变换矩阵
         Matrix.multiplyMM(mvpMatrix, 0, projectionMatrix, 0, temp, 0);
-        sphere.draw(mvpMatrix);
+//        sphere.draw(mvpMatrix);
+        sphereTexture.draw(mvpMatrix);
     }
 
     /**
