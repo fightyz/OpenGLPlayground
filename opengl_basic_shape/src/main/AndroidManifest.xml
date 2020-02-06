@@ -1,14 +1,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.fightyz.openglbasicshape" >
     <application
-        android:name="com.fightyz.comlib.BaseApplication"
+        android:name=".OpenGLApplication"
         android:theme="@style/AppTheme"
         android:icon="@mipmap/ic_launcher"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true">
         <activity android:name=".MainActivity"/>
 
-        <activity android:name=".RendererActivity">
+        <activity android:name=".RendererActivity"/>
+        <activity android:name=".TouchActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

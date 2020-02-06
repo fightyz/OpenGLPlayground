@@ -25,7 +25,8 @@ public class Triangle extends BaseShape {
     private int uMatrixLocation;
 
     float[] triangleVertex = {
-            -0.5f, 0.5f,
+            -1f, 1f,
+//            -0.5f, 0.5f,
             -0.5f, -0.5f,
             0.5f, -0.5f
     };
